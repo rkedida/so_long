@@ -6,35 +6,61 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/02/26 23:24:37 by rkedida          ###   ########.fr        #
+#    Updated: 2023/02/28 21:22:12 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= 
+NAME			=	so_long
 
-SRC			= 
+SRC				=	$(SRC_DIR)/main.c\
+					$(SRC_DIR)/parsing.c
 
-HEADERS		= 
+SRC_DIR			=	./src
+MAPS_DIR		=	./maps
+INC_DIR			=	./includes
+TEXTURES_DIR	=	./textures
+MLX_DIR			=	./mlx
+OBJ_DIR			=	./obj
+PRINTF_DIR		=	./ft_printf/
 
-OBJ			= $(SRC:.c=.o)
+HEADERS			=	$(INC_DIR)/so_long.h\
+					$(PRINTF_DIR)/ft_printf.h
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+INCLUDES		=	-I$(INC_DIR) -I$(MLX_DIR) -I$(PRINTF_DIR)
 
-all: $(NAME)
+OBJ				=	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+CC				=	gcc
+CFLAGS			=	-Wall -Wextra -Werror
 
-$(NAME): $(OBJ) $(HEADERS)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+MLX_LIB			=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+PRINTF_LIB		=	-L$(PRINTF_DIR)
+
+
+all: mlx_init $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+ 
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(PRINTF_LIB) -o $(NAME)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+mlx_init:
+	@make -C $(MLX_DIR) --silent
+	@make -C $(PRINTF_DIR) --silent
 
 clean:
 	-@$(RM) $(OBJ)
+	@make clean -C $(MLX_DIR) --silent
+	@make clean -C $(PRINTF_DIR) --silent
 
 fclean: clean
-	-@$(RM) $(NAME)
+	-@$(RM) $(NAME) --silent
+	@make fclean -C $(PRINTF_DIR) --silent
 
-re: clean all
+re: fclean all
 
 .PHONY: re, fclean, clean, all
