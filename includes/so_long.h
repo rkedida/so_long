@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:12:22 by rkedida           #+#    #+#             */
-/*   Updated: 2023/02/28 21:29:40 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/02/28 21:53:24 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <math.h>
 # include <mlx.h>
 # include <stdbool.h>
-# include "ft_printf.h"
 
 
 typedef struct s_data
