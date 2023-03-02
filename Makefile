@@ -6,14 +6,16 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/02/28 21:53:47 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/02 15:33:40 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
 
 SRC				=	$(SRC_DIR)/main.c\
-					$(SRC_DIR)/parsing.c
+					$(SRC_DIR)/parsing.c\
+					$(SRC_DIR)/error.c\
+					
 
 SRC_DIR			=	./src
 MAPS_DIR		=	./maps
