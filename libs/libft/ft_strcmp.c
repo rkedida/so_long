@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 21:26:51 by rkedida          ###   ########.fr       */
+/*   Created: 2023/03/04 00:08:55 by rkedida           #+#    #+#             */
+/*   Updated: 2023/03/04 00:12:15 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	// t_map	*map;
-
-
-	if (parsing_input(ac, av) != 0)
-		exit(1);
-	(void) ac;
-	(void) av;
-	while(true)
+	while (*s1 && (*s1 == *s2))
 	{
-		void *mlx;
-		void *mlx_win = NULL;
-		mlx = mlx_init();
-		if (!mlx_win)
-			mlx_win = mlx_new_window(mlx, 1920, 1080, "Balu");
-		mlx_loop(mlx);
+		s1++;
+		s2++;
 	}
-
-	return (0);
+	return (*(const unsigned char*)s1 - *(const unsigned char*)s2);
 }
-
-
-
-
-
-
-
-
-

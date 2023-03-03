@@ -6,13 +6,13 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:18:51 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 13:34:12 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/03 21:09:26 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	error(char *message)
+void	error_exit(char *message)
 {
 	if (message)
 	{

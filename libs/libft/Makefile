@@ -6,13 +6,14 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 12:27:08 by rkedida           #+#    #+#              #
-#    Updated: 2022/04/01 23:13:04 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/04 00:13:01 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRCS=	ft_atoi.c\
+SRCS=	ft_strcmp.c\
+		ft_atoi.c\
 		ft_bzero.c\
 		ft_calloc.c\
 		ft_isalnum.c\

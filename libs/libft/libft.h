@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 12:11:35 by rkedida           #+#    #+#             */
-/*   Updated: 2022/04/01 23:13:55 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:12:09 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
 int			ft_isalnum(int c);

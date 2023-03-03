@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:12:22 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:32:11 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:35:49 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,10 @@
 # include <mlx.h>
 # include <stdbool.h>
 # include <fcntl.h>
-# include "libs/libft/libft.h"
-# include "libs/get_next_line/get_next_line.h"
-# include "libs/ft_printf/ft_printf.h"
+# include "libft.h"
+# include "get_next_line.h"
+# include "ft_printf.h"
 
-
-
-
-# define BUF_SIZE 1024;
 
 typedef struct s_map
 {
@@ -56,6 +52,6 @@ typedef struct s_data
 }				t_data;
 
 int		parsing_input(int ac, char **av);
-void	error(char *message);
+void	error_exit(char *message);
 
 #endif

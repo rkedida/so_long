@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:09 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 15:33:24 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/04 00:31:28 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,35 @@
 
 int	parsing_input(int ac, char **av)
 {
-	// t_map	*Map;
 	char	*map;
+	char	*check;
+	int		result;
+
+	map = NULL;
+	check = NULL;
+	result = 0;
+	if (ac != 2)
+		error_exit("usage: ./so_long maps/...");
+	else if (av[1])
+	{
+		map = av[1];
+		check = ft_strchr(map, '.');
+		if (ft_strcmp(map + (ft_strlen(av[1]) - 4), ".ber") != 0)
+			error_exit("is not a Valid map file.");
+		else if (ft_strlen(check) > 4)
+			error_exit("is not a Valid map file.");
+		result = access(av[1], R_OK);
+		if (result != 0)
+			error_exit("You don't have read permissons for the file.");
+		else
+			return (0);
+	}
+	return (0);
+}
+
+// int parsing_map()
+// {
+	// t_map	*Map;
 	// char	*buf = NULL;
 	// int		fd;
 	// int		read_bytes;
@@ -24,18 +51,6 @@ int	parsing_input(int ac, char **av)
 
 
 	// Map = malloc(sizeof(Map));
-	map = av[1];
-
-	if (ac != 2)
-		error("usage: ./so_long maps/...");
-	else if (strcmp(map + (strlen(av[1]) - 4), ".ber") != 0)
-		error("is not a Valid map file.");
-
-	return (0);
-}
-
-// int parsing_map()
-// {
 // 	fd = open(map, O_RDONLY);
 // 	if (fd == -1)
 // 	{

@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/03 17:38:29 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/03 23:34:27 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ OBJ				=	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 
+# MLX_LIB			=	$(MLX_DIR)/libmlx.a -framework OpenGL -framework AppKit
 MLX_LIB			=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 LIBFT_LIB		=	$(LIBFT_DIR)/libft.a
 GNL_LIB			=	$(GNL_DIR)/get_next_line.a
