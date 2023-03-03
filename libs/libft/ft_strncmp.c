@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:39:53 by rkedida          ###   ########.fr       */
+/*   Created: 2022/03/27 13:15:24 by rkedida           #+#    #+#             */
+/*   Updated: 2022/04/01 13:45:54 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	// t_map	*map;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-
-	// if (parsing(ac, av) != 0)
-	// 	exit(1);
-	(void) ac;
-	(void) av;
-	ft_printf("hi\n");
-	int i = ft_strlen(av[0]);
-	printf("%d\n", i);
-	// while(true)
-	// {
-	// 	void *mlx;
-	// 	void *mlx_win;
-	// 	mlx = mlx_init();
-	// 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Balu");
-	// 	mlx_loop(mlx);
-	// }
-
-	return (0);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while ((str1[i] == str2[i]) && str1[i] != 0 && str2[i] != 0 && i < n - 1)
+		i++;
+	return (str1[i] - str2[i]);
 }

@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:39:53 by rkedida          ###   ########.fr       */
+/*   Created: 2022/04/03 22:24:02 by rkedida           #+#    #+#             */
+/*   Updated: 2022/04/04 01:59:08 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_putnbr_fd(int n, int fd)
 {
-	// t_map	*map;
-
-
-	// if (parsing(ac, av) != 0)
-	// 	exit(1);
-	(void) ac;
-	(void) av;
-	ft_printf("hi\n");
-	int i = ft_strlen(av[0]);
-	printf("%d\n", i);
-	// while(true)
-	// {
-	// 	void *mlx;
-	// 	void *mlx_win;
-	// 	mlx = mlx_init();
-	// 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Balu");
-	// 	mlx_loop(mlx);
-	// }
-
-	return (0);
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
 }

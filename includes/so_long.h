@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:12:22 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/02 18:23:46 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/03 17:32:11 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,18 @@
 # include <mlx.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include "libs/libft/libft.h"
+# include "libs/get_next_line/get_next_line.h"
+# include "libs/ft_printf/ft_printf.h"
 
 
-# define MAX_MAP_SIZE = 100;
+
+
+# define BUF_SIZE 1024;
 
 typedef struct s_map
 {
-	char	**map;
+	char	**maps;
 	char	*map;
 	int		fd;
 	int		read_bytes;
@@ -50,7 +55,7 @@ typedef struct s_data
 	void	*img;
 }				t_data;
 
-int		parsing(int ac, char **av);
+int		parsing_input(int ac, char **av);
 void	error(char *message);
 
 #endif

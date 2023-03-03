@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:39:53 by rkedida          ###   ########.fr       */
+/*   Created: 2022/03/24 13:04:09 by rkedida           #+#    #+#             */
+/*   Updated: 2022/04/01 13:22:49 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_bzero(void *s, size_t n)
 {
-	// t_map	*map;
+	size_t			c;
+	unsigned char	*d;
 
-
-	// if (parsing(ac, av) != 0)
-	// 	exit(1);
-	(void) ac;
-	(void) av;
-	ft_printf("hi\n");
-	int i = ft_strlen(av[0]);
-	printf("%d\n", i);
-	// while(true)
-	// {
-	// 	void *mlx;
-	// 	void *mlx_win;
-	// 	mlx = mlx_init();
-	// 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Balu");
-	// 	mlx_loop(mlx);
-	// }
-
-	return (0);
+	d = (unsigned char *)s;
+	c = 0;
+	while (c < n)
+	{
+		d[c] = '\0';
+		c++;
+	}
 }

@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:39:53 by rkedida          ###   ########.fr       */
+/*   Created: 2022/04/03 22:07:27 by rkedida           #+#    #+#             */
+/*   Updated: 2022/04/03 22:42:28 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_putendl_fd(char *s, int fd)
 {
-	// t_map	*map;
+	const char	l = '\n';
 
-
-	// if (parsing(ac, av) != 0)
-	// 	exit(1);
-	(void) ac;
-	(void) av;
-	ft_printf("hi\n");
-	int i = ft_strlen(av[0]);
-	printf("%d\n", i);
-	// while(true)
-	// {
-	// 	void *mlx;
-	// 	void *mlx_win;
-	// 	mlx = mlx_init();
-	// 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Balu");
-	// 	mlx_loop(mlx);
-	// }
-
-	return (0);
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, &l, 1);
 }

@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:39:53 by rkedida          ###   ########.fr       */
+/*   Created: 2022/03/28 18:55:12 by rkedida           #+#    #+#             */
+/*   Updated: 2022/04/01 13:42:47 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	// t_map	*map;
+	unsigned int	index;
+	char			*dst;
 
-
-	// if (parsing(ac, av) != 0)
-	// 	exit(1);
-	(void) ac;
-	(void) av;
-	ft_printf("hi\n");
-	int i = ft_strlen(av[0]);
-	printf("%d\n", i);
-	// while(true)
-	// {
-	// 	void *mlx;
-	// 	void *mlx_win;
-	// 	mlx = mlx_init();
-	// 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Balu");
-	// 	mlx_loop(mlx);
-	// }
-
-	return (0);
+	index = 0;
+	if (s1 == 0 || s2 == 0)
+		return (0);
+	dst = malloc(sizeof(*dst) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (dst == 0)
+		return (0);
+	while (*s1 != '\0')
+		dst[index++] = *s1++;
+	while (*s2 != '\0')
+		dst[index++] = *s2++;
+	dst[index] = '\0';
+	return (dst);
 }

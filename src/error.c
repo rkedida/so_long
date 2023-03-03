@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:18:51 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/02 15:39:50 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/03 13:34:12 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	error(char *message)
 {
 	if (message)
 	{
-		printf("Error: %s\n", message);
-		exit(1);
+		write(2, "Error: ", 7);
+		write(2, message, strlen(message));
+		write(2, "\n", 1);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		printf("Error: UNKNOWN");
-		exit(1);
+		write(2, "Error: UNKNOWN", 14);
+		exit(EXIT_FAILURE);
 	}
 }
