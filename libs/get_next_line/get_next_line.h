@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 18:32:02 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:01:03 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/05 14:18:45 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen1(const char *s);
+char	*ft_strchr1(const char *s, int c);
 char	*get_next_line(int fd);
 char	*ft_strjoin1(char *s, char *buff);
 char	*ft_next_line(char *protect);

@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:22:33 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/03 17:00:48 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/05 14:19:16 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_protect(char *protect)
 		free(protect);
 		return (NULL);
 	}
-	p = (char *)malloc(sizeof(char) * (ft_strlen(protect) - i + 1));
+	p = (char *)malloc(sizeof(char) * (ft_strlen1(protect) - i + 1));
 	if (!p)
 		return (NULL);
 	i++;
@@ -75,7 +75,7 @@ char	*ft_read_protect(int fd, char *protect)
 	if (!buff)
 		return (NULL);
 	read_char = 1;
-	while (!ft_strchr(protect, '\n') && read_char != 0)
+	while (!ft_strchr1(protect, '\n') && read_char != 0)
 	{
 		read_char = read(fd, buff, BUFFER_SIZE);
 		if (read_char == -1)

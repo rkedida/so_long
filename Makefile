@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/03 23:34:27 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/13 17:57:23 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,11 @@ NAME			=	so_long
 
 SRC				=	$(SRC_DIR)/main.c\
 					$(SRC_DIR)/parsing.c\
+					$(SRC_DIR)/parsing_map.c\
+					$(SRC_DIR)/validate_map.c\
+					$(SRC_DIR)/dfs_search.c\
 					$(SRC_DIR)/error.c\
+					$(SRC_DIR)/checkers.c\
 					
 
 SRC_DIR			=	./src

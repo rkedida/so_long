@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 12:27:08 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/03 16:50:59 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/05 14:31:59 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJS=$(SRCS:.c=.o)
 BONUSOBJS=$(BONUSSRC:.c=.o)
 
 CC = cc
-CFLAG = -Wall -Wextra -Werror -D BUFFER_SIZE=1024
+CFLAG = -Wall -Wextra -Werror -D BUFFER_SIZE=1
 
 all: $(NAME)
 
