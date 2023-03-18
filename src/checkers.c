@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:09 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/13 17:50:58 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/17 20:19:27 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	check_tracked_data(t_mapData *Map)
 
 void	check_exit_collectibles(t_mapData *Map)
 {
-	if (!Map->found_exit || Map->num_collectibles != 0 )
+	if (!Map->found_exit || Map->num_collectibles != 0)
 		error_exit("Invalid Path in Map.");
 }

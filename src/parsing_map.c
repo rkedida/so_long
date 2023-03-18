@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:09 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/13 17:58:38 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/17 21:10:27 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	track_map_data(char c, t_mapData *Map)
 {
 	if (c == 'C')
-			Map->num_collectibles++;
+	{
+		Map->num_collectibles++;
+		Map->MAX_COLLECTIBLES = Map->num_collectibles;
+	}
 	else if (c == 'E')
 	{
 		Map->num_exits++;

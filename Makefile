@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/13 17:57:23 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/16 12:52:13 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC				=	$(SRC_DIR)/main.c\
 					$(SRC_DIR)/dfs_search.c\
 					$(SRC_DIR)/error.c\
 					$(SRC_DIR)/checkers.c\
+					$(SRC_DIR)/textures.c\
+					$(SRC_DIR)/key_hook_manager.c\
 					
 
 SRC_DIR			=	./src

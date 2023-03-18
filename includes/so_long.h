@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:12:22 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/13 18:25:21 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/17 21:21:41 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
+# include <limits.h>
 # include <stdbool.h>
 # include <fcntl.h>
 # include <mlx.h>
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
+
+#define MAX_WINDOW_WIDTH 1920
+#define MAX_WINDOW_HEIGHT 1080
 
 
 typedef struct s_mapData
@@ -42,10 +46,13 @@ typedef struct s_mapData
 	int		rows;
 // map Data Tracking
 	int		player;
-	int		num_collectibles;
 	int		num_exits;
-	int		player_row;
-	int		player_col;
+	int		num_collectibles;
+	int		MAX_COLLECTIBLES;
+
+	int		player_pos[2];
+	int		exit_pos[2];
+	// int		**collectibles;
 	bool	**visited;
 // open and read from a Map file
 	int		fd;
@@ -53,14 +60,24 @@ typedef struct s_mapData
 // map Data
 
 	bool	found_exit;
+	int		steps;
+	struct s_windata	*img;
+
 }				t_mapData;
 
-// typedef struct s_data
-// {
-// 	void	*mlx;
-// 	void	*mlx_win;
-// 	void	*img;
-// }				t_data;
+typedef struct s_windata
+{
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		img_width;
+	int		img_height;
+	char	*relative_path;
+}				t_winData;
 
 // error.c
 void			error_exit(char *message);
@@ -85,19 +102,32 @@ void			open_file(t_mapData *Map);
 void			parsing_map(t_mapData *Map);
 
 // validate_map.c
-void			set_player_pos(t_mapData *Map);
+void			set_exit_player_pos(t_mapData *Map);
 void			init_bool_visited(t_mapData *Map);
 void			validate_map(t_mapData *Map);
 
 // dfs_search.c
-
 void			dfs(t_mapData *Map, int row, int col, bool **visited);
 void			up(t_mapData *Map, int row, int col, bool **visited);
 void			down(t_mapData *Map, int row, int col, bool **visited);
 void			left(t_mapData *Map, int row, int col, bool **visited);
 void			right(t_mapData *Map, int row, int col, bool **visited);
 
+// key_hook_manager.c
+int				handle_keypress(int keycode, t_mapData *Map);
+void			move_up(t_mapData *Map);
+void			move_down(t_mapData *Map);
+void			move_left(t_mapData *Map);
+void			move_right(t_mapData *Map);
+
+// textures.c
+void			load_images(int i, int j, t_winData *img);
+void			load_texture(char c, int i, int j, t_winData *img);
+void			load_textures(t_mapData *Map, t_winData *img);
+int				cleanup_and_exit(t_mapData *Map);
+
 // main.c
 void			*init_map_struct(t_mapData *Map);
+void			*init_winData(t_winData *img);
 
 #endif
