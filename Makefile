@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/18 18:32:00 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/18 19:41:44 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,22 +51,20 @@ GNL_LIB			=	$(GNL_DIR)/get_next_line.a
 FTPRINTF_LIB	=	$(FTPRINTF_DIR)/libftprintf.a
 
 
-all: libs_init $(OBJ_DIR) $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
  
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(GNL_LIB) $(FTPRINTF_LIB) -o $(NAME)
-
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-
-libs_init:
 	@make -C $(MLX_DIR) > /dev/null 2>&1
 	@make -C $(LIBFT_DIR) > /dev/null 2>&1
 	@make -C $(GNL_DIR) > /dev/null 2>&1
 	@make -C $(FTPRINTF_DIR) > /dev/null 2>&1
+	@$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(GNL_LIB) $(FTPRINTF_LIB) -o $(NAME)
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 norm:
 	norminette src/ includes/ libs/ft_printf libs/libft libs/get_next_line
