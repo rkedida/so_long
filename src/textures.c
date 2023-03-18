@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/18 18:20:06 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:57:30 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	load_textures(t_mapData *Map, t_winData *img)
 		}
 		i++;
 	}
-	Map->num_collectibles = Map->max_collectibles;
 }
 
 int	cleanup_and_exit(t_mapData *Map)
