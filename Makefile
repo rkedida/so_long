@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/16 12:52:13 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/18 16:31:28 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(GNL_LIB) $(FTPRINTF_LIB) -o $(NAME)
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 libs_init:
 	@make -C $(MLX_DIR) > /dev/null 2>&1
@@ -70,14 +70,15 @@ libs_init:
 	@make -C $(FTPRINTF_DIR) > /dev/null 2>&1
 
 clean:
-	-@$(RM) $(OBJ)
+	-@$(RM) $(OBJ) --silent
+	-@$(RM)  -rf $(OBJ_DIR) --silent
 	@make clean -C $(MLX_DIR)
 	@make clean -C $(LIBFT_DIR) --silent
 	@make clean -C $(GNL_DIR) --silent
 	@make clean -C $(FTPRINTF_DIR) --silent
 
 fclean: clean
-	-@$(RM) $(NAME)
+	-@$(RM) $(NAME) --silent
 	@make fclean -C $(LIBFT_DIR) --silent
 	@make fclean -C $(GNL_DIR) --silent
 	@make fclean -C $(FTPRINTF_DIR) --silent
