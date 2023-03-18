@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:09 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/17 20:18:44 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:07:34 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ void	parsing_input(t_mapData *Map, int ac, char **av)
 			error_exit("is not a Valid map file.");
 		else if (ft_strlen(Map->check) > 4)
 			error_exit("is not a Valid map file.");
-		if ((Map->result = access(Map->map_path, F_OK)) != 0)
+		Map->result = access(Map->map_path, F_OK);
+		if (Map->result != 0)
 			error_exit("File doesn't exist.");
-		else if ((Map->result = access(Map->map_path, R_OK)) != 0)
+		Map->result = access(Map->map_path, R_OK);
+		if (Map->result != 0)
 			error_exit("You don't have read permissons for the file.");
 	}
 }

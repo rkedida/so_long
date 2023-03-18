@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:12:22 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/17 21:21:41 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:20:54 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,43 +26,33 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 
-#define MAX_WINDOW_WIDTH 1920
-#define MAX_WINDOW_HEIGHT 1080
-
+# define MAX_WINDOW_WIDTH 1920
+# define MAX_WINDOW_HEIGHT 1080
 
 typedef struct s_mapData
 {
-// input parsing
-	char	*map_path;
-	char	*check;
-	int		result;
-// map parsing
-	char	*line;
-	char	**map;
-	int		total_cols;
-	int		MAX_WIDTH;
-	int		MAX_HEIGHT;
-	int		cols;
-	int		rows;
-// map Data Tracking
-	int		player;
-	int		num_exits;
-	int		num_collectibles;
-	int		MAX_COLLECTIBLES;
-
-	int		player_pos[2];
-	int		exit_pos[2];
-	// int		**collectibles;
-	bool	**visited;
-// open and read from a Map file
-	int		fd;
-	int		read_bytes;
-// map Data
-
-	bool	found_exit;
-	int		steps;
+	char				*map_path;
+	char				*check;
+	int					result;
+	char				*line;
+	char				**map;
+	int					total_cols;
+	int					max_width;
+	int					max_height;
+	int					cols;
+	int					rows;
+	int					player;
+	int					num_exits;
+	int					num_collectibles;
+	int					max_collectibles;
+	int					player_pos[2];
+	int					exit_pos[2];
+	bool				**visited;
+	int					fd;
+	int					read_bytes;
+	bool				found_exit;
+	int					steps;
 	struct s_windata	*img;
-
 }				t_mapData;
 
 typedef struct s_windata
@@ -128,6 +118,6 @@ int				cleanup_and_exit(t_mapData *Map);
 
 // main.c
 void			*init_map_struct(t_mapData *Map);
-void			*init_winData(t_winData *img);
+void			*init_windata(t_winData *img);
 
 #endif

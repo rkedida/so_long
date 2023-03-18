@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:18:51 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/13 18:25:08 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:20:34 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ void	*ft_malloc(void *str, size_t size)
 	str = malloc(size);
 	if (!str)
 		error_exit("malloc failed.");
-	return str;
+	return (str);
 }
 
 void	ft_free(void **str, t_mapData *Map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < Map->MAX_HEIGHT && str)
+	while (i < Map->max_height && str)
 	{
 		free(str[i]);
 		i++;

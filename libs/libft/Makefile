@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 12:27:08 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/13 17:33:14 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/18 18:39:38 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,19 +46,18 @@ SRCS=	ft_strcmp.c\
 		ft_strtrim.c\
 		ft_substr.c\
 		ft_tolower.c\
-		ft_toupper.c
-BONUSSRC =	ft_lstnew.c\
-			ft_lstadd_front.c\
-			ft_lstsize.c\
-			ft_lstlast.c\
-			ft_lstadd_back.c\
-			ft_lstdelone.c\
-			ft_lstclear.c\
-			ft_lstiter.c\
-			ft_lstmap.c\
+		ft_toupper.c\
+		ft_lstnew.c\
+		ft_lstadd_front.c\
+		ft_lstsize.c\
+		ft_lstlast.c\
+		ft_lstadd_back.c\
+		ft_lstdelone.c\
+		ft_lstclear.c\
+		ft_lstiter.c\
+		ft_lstmap.c\
 
 OBJS=$(SRCS:.c=.o)
-BONUSOBJS=$(BONUSSRC:.c=.o)
 
 CC = cc
 CFLAG = -Wall -Wextra -Werror
@@ -68,9 +67,6 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-bonus : $(BONUSOBJS) $(OBJS)
-	ar rc $(NAME) $(BONUSOBJS) $(OBJ)
-	
 %.o : %.c
 	$(CC) $(CFLAG) -c $^ -o $@
 clean:

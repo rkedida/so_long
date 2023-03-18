@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:09 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/17 21:10:27 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:20:54 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	track_map_data(char c, t_mapData *Map)
 	if (c == 'C')
 	{
 		Map->num_collectibles++;
-		Map->MAX_COLLECTIBLES = Map->num_collectibles;
+		Map->max_collectibles = Map->num_collectibles;
 	}
 	else if (c == 'E')
 	{
@@ -33,14 +33,13 @@ void	track_map_data(char c, t_mapData *Map)
 	}
 }
 
-void ft_append(char **str, char c, t_mapData *Map)
+void	ft_append(char **str, char c, t_mapData *Map)
 {
-	char *new_str;
-	int len;
+	char	*new_str;
+	int		len;
 
 	new_str = NULL;
 	len = 0;
-
 	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P' || c == '\n')
 	{
 		Map->cols++;
@@ -49,9 +48,9 @@ void ft_append(char **str, char c, t_mapData *Map)
 	else
 		error_exit("Invalid Character.");
 	if (!str)
-		return;
+		return ;
 	len = ft_strlen(*str);
-	new_str = ft_malloc(new_str,(len + 2));
+	new_str = ft_malloc(new_str, (len + 2));
 	ft_memcpy(new_str, *str, len);
 	new_str[len] = c;
 	new_str[len + 1] = '\0';
@@ -64,10 +63,10 @@ void	read_validate_append(char buf, t_mapData *Map)
 	if (buf == '\n')
 	{	
 		ft_append(&(Map->line), buf, Map);
-		Map->MAX_WIDTH = Map->cols;
+		Map->max_width = Map->cols;
 		Map->total_cols += Map->cols;
 		Map->rows++;
-		Map->MAX_HEIGHT = Map->rows;
+		Map->max_height = Map->rows;
 		Map->cols = 0;
 	}
 	else
@@ -76,7 +75,8 @@ void	read_validate_append(char buf, t_mapData *Map)
 
 void	open_file(t_mapData *Map)
 {
-	if ((Map->fd = open(Map->map_path, O_RDONLY)) == -1)
+	Map->fd = open(Map->map_path, O_RDONLY);
+	if (Map->fd == -1)
 		error_exit("Error opening file.");
 }
 
@@ -85,12 +85,15 @@ void	parsing_map(t_mapData *Map)
 	char		*buf;
 
 	buf = NULL;
-
 	open_file(Map);
 	buf = ft_malloc(buf, 1);
 	Map->line = ft_malloc(Map->line, 1);
-	while ((Map->read_bytes = read(Map->fd, buf, 1)) > 0)
+	Map->read_bytes = read(Map->fd, buf, 1);
+	while (Map->read_bytes > 0)
+	{
 		read_validate_append(buf[0], Map);
+		Map->read_bytes = read(Map->fd, buf, 1);
+	}
 	check_if_map_is_rectangular(Map);
 	Map->map = ft_split(Map->line, '\n');
 	check_surrounded_walls(Map);

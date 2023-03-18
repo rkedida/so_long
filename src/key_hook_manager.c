@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/18 14:10:32 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:20:06 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	handle_keypress(int keycode, t_mapData *Map)
 		move_left(Map);
 	else if (keycode == 2)
 		move_right(Map);
-	if (Map->MAX_COLLECTIBLES == 0)
+	if (Map->max_collectibles == 0)
 	{
 		Map->map[Map->exit_pos[0]][Map->exit_pos[1]] = 'E';
 		load_texture('E', Map->exit_pos[0], Map->exit_pos[1], Map->img);
@@ -36,15 +36,17 @@ void	move_up(t_mapData *Map)
 {
 	if (Map->map[Map->player_pos[0] - 1][Map->player_pos[1]] != '1')
 	{
-		if (Map->map[Map->player_pos[0] - 1][Map->player_pos[1]] == 'C' && Map->MAX_COLLECTIBLES > 0)
+		if (Map->map[Map->player_pos[0] - 1][Map->player_pos[1]] == 'C' \
+			&& Map->max_collectibles > 0)
 		{
-			Map->MAX_COLLECTIBLES--;
+			Map->max_collectibles--;
 			Map->map[Map->player_pos[0] - 1][Map->player_pos[1]] = '0';
 		}
 		load_texture('0', Map->player_pos[0], Map->player_pos[1], Map->img);
 		Map->player_pos[0]--;
 		ft_printf("%d = Steps walked\n", ++Map->steps);
-		if (Map->MAX_COLLECTIBLES == 0 && Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		if (Map->max_collectibles == 0 \
+			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
 			cleanup_and_exit(Map);
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);
@@ -55,15 +57,17 @@ void	move_down(t_mapData *Map)
 {
 	if (Map->map[Map->player_pos[0] + 1][Map->player_pos[1]] != '1')
 	{
-		if (Map->map[Map->player_pos[0] + 1][Map->player_pos[1]] == 'C' && Map->MAX_COLLECTIBLES > 0)
+		if (Map->map[Map->player_pos[0] + 1][Map->player_pos[1]] == 'C' \
+			&& Map->max_collectibles > 0)
 		{
-			Map->MAX_COLLECTIBLES--;
+			Map->max_collectibles--;
 			Map->map[Map->player_pos[0] + 1][Map->player_pos[1]] = '0';
 		}
 		load_texture('0', Map->player_pos[0], Map->player_pos[1], Map->img);
 		Map->player_pos[0]++;
 		ft_printf("%d = Steps walked\n", ++Map->steps);
-		if (Map->MAX_COLLECTIBLES == 0 && Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		if (Map->max_collectibles == 0 \
+			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
 			cleanup_and_exit(Map);
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);
@@ -74,15 +78,17 @@ void	move_left(t_mapData *Map)
 {
 	if (Map->map[Map->player_pos[0]][Map->player_pos[1] - 1] != '1')
 	{
-		if (Map->map[Map->player_pos[0]][Map->player_pos[1] - 1] == 'C' && Map->MAX_COLLECTIBLES > 0)
+		if (Map->map[Map->player_pos[0]][Map->player_pos[1] - 1] == 'C' \
+			&& Map->max_collectibles > 0)
 		{
-			Map->MAX_COLLECTIBLES--;
+			Map->max_collectibles--;
 			Map->map[Map->player_pos[0]][Map->player_pos[1] - 1] = '0';
 		}
 		load_texture('0', Map->player_pos[0], Map->player_pos[1], Map->img);
 		Map->player_pos[1]--;
 		ft_printf("%d = Steps walked\n", ++Map->steps);
-		if (Map->MAX_COLLECTIBLES == 0 && Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		if (Map->max_collectibles == 0 \
+			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
 			cleanup_and_exit(Map);
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);
@@ -93,15 +99,17 @@ void	move_right(t_mapData *Map)
 {
 	if (Map->map[Map->player_pos[0]][Map->player_pos[1] + 1] != '1')
 	{
-		if (Map->map[Map->player_pos[0]][Map->player_pos[1] + 1] == 'C' && Map->MAX_COLLECTIBLES > 0)
+		if (Map->map[Map->player_pos[0]][Map->player_pos[1] + 1] == 'C' \
+			&& Map->max_collectibles > 0)
 		{
-			Map->MAX_COLLECTIBLES--;
+			Map->max_collectibles--;
 			Map->map[Map->player_pos[0]][Map->player_pos[1] + 1] = '0';
 		}
 		load_texture('0', Map->player_pos[0], Map->player_pos[1], Map->img);
 		Map->player_pos[1]++;
 		ft_printf("%d = Steps walked\n", ++Map->steps);
-		if (Map->MAX_COLLECTIBLES == 0 && Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		if (Map->max_collectibles == 0 \
+			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
 			cleanup_and_exit(Map);
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);

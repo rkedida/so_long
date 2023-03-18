@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/18 16:32:31 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:43:59 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,24 @@ void	*init_map_struct(t_mapData *Map)
 	Map->line = NULL;
 	Map->map = NULL;
 	Map->total_cols = 0;
-	Map->MAX_WIDTH = 0;
-	Map->MAX_HEIGHT = 0;
+	Map->max_width = 0;
+	Map->max_height = 0;
 	Map->rows = 0;
 	Map->cols = 0;
 	Map->player = 0;
 	Map->num_collectibles = 0;
-	Map->MAX_COLLECTIBLES = 0;
+	Map->max_collectibles = 0;
 	Map->num_exits = 0;
-
 	Map->fd = 0;
 	Map->read_bytes = 0;
 	Map->visited = NULL;
 	Map->found_exit = false;
 	Map->img = NULL;
 	Map->steps = 0;
-
 	return (Map);
 }
 
-void	*init_winData(t_winData *img)
+void	*init_windata(t_winData *img)
 {
 	img = malloc(sizeof(t_winData));
 	img->mlx = NULL;
@@ -49,41 +47,37 @@ void	*init_winData(t_winData *img)
 	img->bpp = 0;
 	img->line_length = 0;
 	img->endian = 0;
-
 	img->img_width = 32;
 	img->img_height = 32;
 	img->relative_path = NULL;
 	return (img);
 }
 
-void	leaks()
+void	leaks(void)
 {
 	system("leaks so_long");
 }
 
 int	main(int ac, char **av)
 {
-	// atexit(leaks);
-	// leaks();
-	t_mapData	*Map;
+	t_mapData	*map;
 
-	Map = NULL;
-
-	Map = init_map_struct(Map);
-	Map->img = init_winData(Map->img);
-	parsing(ac, av, Map);
-	Map->img->mlx = mlx_init();
-	if ((Map->MAX_WIDTH - 1) * Map->img->img_width > MAX_WINDOW_WIDTH || Map->MAX_HEIGHT * Map->img->img_height > MAX_WINDOW_HEIGHT)
-	{
-		printf("%d - width === %d - height\n", (Map->MAX_WIDTH - 1) * Map->img->img_width, Map->MAX_HEIGHT * Map->img->img_height);
+	leaks();
+	atexit(leaks);
+	map = NULL;
+	map = init_map_struct(map);
+	map->img = init_windata(map->img);
+	parsing(ac, av, map);
+	if ((map->max_width - 1) * map->img->img_width > MAX_WINDOW_WIDTH \
+		|| map->max_height * map->img->img_height > MAX_WINDOW_HEIGHT)
 		error_exit("Window to big.");
-	}
-		printf("%d - width === %d - height\n", (Map->MAX_WIDTH - 1) * Map->img->img_width, Map->MAX_HEIGHT * Map->img->img_height);
-	Map->img->mlx_win = mlx_new_window(Map->img->mlx, (Map->MAX_WIDTH - 1) * Map->img->img_width, (Map->MAX_HEIGHT) * Map->img->img_height, "Francesca");
-	load_textures(Map, Map->img);
-	mlx_key_hook(Map->img->mlx_win, &handle_keypress, Map);
-	mlx_hook(Map->img->mlx_win, 17, 0L, cleanup_and_exit, Map);
-	mlx_loop(Map->img->mlx);
-
+	map->img->mlx = mlx_init();
+	map->img->mlx_win = mlx_new_window(map->img->mlx, \
+		(map->max_width - 1) * map->img->img_width, \
+			(map->max_height) * map->img->img_height, "Balu");
+	load_textures(map, map->img);
+	mlx_key_hook(map->img->mlx_win, &handle_keypress, map);
+	mlx_hook(map->img->mlx_win, 17, 0L, cleanup_and_exit, map);
+	mlx_loop(map->img->mlx);
 	return (0);
 }

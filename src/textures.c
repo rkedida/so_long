@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/18 14:17:17 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:20:06 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	load_images(int i, int j, t_winData *img)
 {
-	img->img = mlx_xpm_file_to_image(img->mlx, img->relative_path, &img->img_width, &img->img_height);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, j * img->img_width, i * img->img_height);
-	img->addr = mlx_get_data_addr(img->mlx_win, &img->bpp, &img->line_length, &img->endian);
+	img->img = mlx_xpm_file_to_image(img->mlx, img->relative_path, \
+		&img->img_width, &img->img_height);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, j * \
+		img->img_width, i * img->img_height);
+	img->addr = mlx_get_data_addr(img->mlx_win, &img->bpp, \
+		&img->line_length, &img->endian);
 }
 
 void	load_texture(char c, int i, int j, t_winData *img)
@@ -48,9 +51,9 @@ void	load_texture(char c, int i, int j, t_winData *img)
 
 void	load_textures(t_mapData *Map, t_winData *img)
 {
-	int	i;
-	int	j;
-	char c;
+	int		i;
+	int		j;
+	char	c;
 
 	i = 0;
 	while (Map->map[i] != NULL)
@@ -64,14 +67,13 @@ void	load_textures(t_mapData *Map, t_winData *img)
 		}
 		i++;
 	}
-	Map->num_collectibles = Map->MAX_COLLECTIBLES;
+	Map->num_collectibles = Map->max_collectibles;
 }
 
 int	cleanup_and_exit(t_mapData *Map)
 {
 	mlx_destroy_window(Map->img->mlx, Map->img->mlx_win);
-
-	ft_free((void**)Map->map, Map);
+	ft_free((void **)Map->map, Map);
 	free(Map->img);
 	free(Map);
 	exit(0);

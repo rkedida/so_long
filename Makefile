@@ -6,7 +6,7 @@
 #    By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/26 23:22:24 by rkedida           #+#    #+#              #
-#    Updated: 2023/03/18 16:31:28 by rkedida          ###   ########.fr        #
+#    Updated: 2023/03/18 18:32:00 by rkedida          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,6 @@ OBJ				=	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 
-# MLX_LIB			=	$(MLX_DIR)/libmlx.a -framework OpenGL -framework AppKit
 MLX_LIB			=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 LIBFT_LIB		=	$(LIBFT_DIR)/libft.a
 GNL_LIB			=	$(GNL_DIR)/get_next_line.a
@@ -68,6 +67,9 @@ libs_init:
 	@make -C $(LIBFT_DIR) > /dev/null 2>&1
 	@make -C $(GNL_DIR) > /dev/null 2>&1
 	@make -C $(FTPRINTF_DIR) > /dev/null 2>&1
+
+norm:
+	norminette src/ includes/ libs/ft_printf libs/libft libs/get_next_line
 
 clean:
 	-@$(RM) $(OBJ) --silent

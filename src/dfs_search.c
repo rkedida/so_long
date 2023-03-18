@@ -6,22 +6,19 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:09 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/17 20:09:26 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/18 18:20:54 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void dfs(t_mapData *Map, int row, int col, bool **visited)
+void	dfs(t_mapData *Map, int row, int col, bool **visited)
 {
-
 	visited[row][col] = true;
-
 	if (Map->map[row][col] == 'C')
 		Map->num_collectibles--;
 	if (Map->map[row][col] == 'E')
 		Map->found_exit = true;
-
 	up(Map, row, col, visited);
 	down(Map, row, col, visited);
 	left(Map, row, col, visited);
@@ -36,7 +33,8 @@ void	up(t_mapData *Map, int row, int col, bool **visited)
 
 void	down(t_mapData *Map, int row, int col, bool **visited)
 {
-	if (row < Map->MAX_HEIGHT - 2 && Map->map[row + 1][col] != '1' && !visited[row + 1][col])
+	if (row < Map->max_height - 2 \
+		&& Map->map[row + 1][col] != '1' && !visited[row + 1][col])
 		dfs(Map, row + 1, col, visited);
 }
 
@@ -48,6 +46,7 @@ void	left(t_mapData *Map, int row, int col, bool **visited)
 
 void	right(t_mapData *Map, int row, int col, bool **visited)
 {
-	if (col < Map->MAX_WIDTH - 2 && Map->map[row][col + 1] != '1' && !visited[row][col + 1])
+	if (col < Map->max_width - 2 && \
+		Map->map[row][col + 1] != '1' && !visited[row][col + 1])
 		dfs(Map, row, col + 1, visited);
 }
