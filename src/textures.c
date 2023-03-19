@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/18 18:57:30 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/19 01:47:01 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,25 @@ void	load_texture(char c, int i, int j, t_winData *img)
 {
 	if (c == 'P')
 	{
-		img->relative_path = "./xpm/ground.xpm";
+		img->relative_path = "./xpm/ground1.xpm";
 		load_images(i, j, img);
-		img->relative_path = "./xpm/player.xpm";
+		img->relative_path = "./xpm/player1.xpm";
 	}
 	else if (c == '0')
-		img->relative_path = "./xpm/ground.xpm";
+		img->relative_path = "./xpm/ground1.xpm";
 	else if (c == '1')
-		img->relative_path = "./xpm/wall.xpm";
+		img->relative_path = "./xpm/wall1.xpm";
 	else if (c == 'C')
 	{
-		img->relative_path = "./xpm/ground.xpm";
+		img->relative_path = "./xpm/ground1.xpm";
 		load_images(i, j, img);
-		img->relative_path = "./xpm/collectible.xpm";
+		img->relative_path = "./xpm/collectible1.xpm";
 	}
 	else if (c == 'E')
 	{
-		img->relative_path = "./xpm/ground.xpm";
+		img->relative_path = "./xpm/ground1.xpm";
 		load_images(i, j, img);
-		img->relative_path = "./xpm/exit.xpm";
+		img->relative_path = "./xpm/exit1.xpm";
 	}
 	load_images(i, j, img);
 }

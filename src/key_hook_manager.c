@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/18 18:20:06 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/19 01:45:08 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	move_up(t_mapData *Map)
 		ft_printf("%d = Steps walked\n", ++Map->steps);
 		if (Map->max_collectibles == 0 \
 			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		{
+			ft_printf("YOU WON!\n");
 			cleanup_and_exit(Map);
+		}
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);
 	}
@@ -68,7 +71,10 @@ void	move_down(t_mapData *Map)
 		ft_printf("%d = Steps walked\n", ++Map->steps);
 		if (Map->max_collectibles == 0 \
 			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		{
+			ft_printf("YOU WON!\n");
 			cleanup_and_exit(Map);
+		}
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);
 	}
@@ -89,7 +95,10 @@ void	move_left(t_mapData *Map)
 		ft_printf("%d = Steps walked\n", ++Map->steps);
 		if (Map->max_collectibles == 0 \
 			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		{
+			ft_printf("YOU WON!\n");
 			cleanup_and_exit(Map);
+		}
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);
 	}
@@ -110,7 +119,10 @@ void	move_right(t_mapData *Map)
 		ft_printf("%d = Steps walked\n", ++Map->steps);
 		if (Map->max_collectibles == 0 \
 			&& Map->map[Map->player_pos[0]][Map->player_pos[1]] == 'E')
+		{
+			ft_printf("YOU WON!\n");
 			cleanup_and_exit(Map);
+		}
 		else
 			load_texture('P', Map->player_pos[0], Map->player_pos[1], Map->img);
 	}
