@@ -6,7 +6,7 @@
 /*   By: rkedida <rkedida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:11:05 by rkedida           #+#    #+#             */
-/*   Updated: 2023/03/19 01:16:52 by rkedida          ###   ########.fr       */
+/*   Updated: 2023/03/19 14:14:44 by rkedida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	main(int ac, char **av)
 {
 	t_mapData	*map;
 
-	// leaks();
-	// atexit(leaks);
+	leaks();
+	atexit(leaks);
 	map = NULL;
 	map = init_map_struct(map);
 	map->img = init_windata(map->img);
