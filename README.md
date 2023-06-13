@@ -23,7 +23,7 @@ make
 To start the game, run the following command, where *.ber is the name of a map file in .ber format:
 
 ```sh
-./so_long *.ber
+./so_long maps/*.ber
 ```
 
 ### Game controls:
